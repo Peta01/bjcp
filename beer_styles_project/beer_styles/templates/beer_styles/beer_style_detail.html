@@ -1,0 +1,116 @@
+{% extends 'beer_styles/base.html' %}
+
+{% block title %}Detail pivního stylu{% endblock %}
+
+{% block content %}
+<!-- Navigační tlačítka nahoře -->
+<div class="d-flex justify-content-between my-4">
+    <a href="{% url 'beer_style_detail' first_style.id %}" class="btn btn-outline-primary">
+        ⏮️ Na začátek
+    </a>
+    {% if previous_style %}
+    <a href="{% url 'beer_style_detail' previous_style.id %}" class="btn btn-outline-secondary">
+        ◀️ Předchozí
+    </a>
+    {% else %}
+    <a class="btn btn-outline-secondary disabled">◀️ Předchozí</a>
+    {% endif %}
+    
+    {% if next_style %}
+    <a href="{% url 'beer_style_detail' next_style.id %}" class="btn btn-outline-secondary">
+        ▶️ Další
+    </a>
+    {% else %}
+    <a class="btn btn-outline-secondary disabled">▶️ Další</a>
+    {% endif %}
+    <a href="{% url 'beer_style_detail' last_style.id %}" class="btn btn-outline-primary">
+        ⏭️ Na konec
+    </a>
+</div>
+<h2>{{ style.name }} ({{ style.number }})</h2>
+<h4>Kategorie: {{ style.category }} ({{ style.categorynumber }})</h4>
+
+<hr>
+
+<!-- Analytické údaje -->
+
+<div class="row">
+    <div class="col-md-6">
+        <p><strong>IBU:</strong> {{ style.ibumin }} - {{ style.ibumax }}</p>
+        <p><strong>OG:</strong> {{ style.ogmin }} - {{ style.ogmax }}</p>
+        <p><strong>Brix:</strong> {{ style.brixmin }} - {{ style.brixmax }} °Bx</p>
+        <p><strong>FG:</strong> {{ style.fgmin }} - {{ style.fgmax }}</p>
+        <p><strong>SRM:</strong> {{ style.srmmin }} - {{ style.srmmax }}</p>
+        <p><strong>EBC:</strong> {{ style.ebcmin }} - {{ style.ebcmax }}</p>
+        <p><strong>ABV:</strong> {{ style.abvmin }} - {{ style.abvmax }} %</p>
+    </div>
+</div>
+
+<hr>
+
+<!-- Textová pole s českými ekvivalenty -->
+<div class="row">
+    <div class="col-md-6">
+        <p><strong>Overall Impression:</strong> {{ style.overallimpression }}</p>
+        <p><strong>Aroma:</strong> {{ style.aroma }}</p>
+        <p><strong>Appearance:</strong> {{ style.appearance }}</p>
+        <p><strong>Flavor:</strong> {{ style.flavor }}</p>
+        <p><strong>Mouthfeel:</strong> {{ style.mouthfeel }}</p>
+        <p><strong>Comments:</strong> {{ style.comments }}</p>
+        <p><strong>History:</strong> {{ style.history }}</p>
+        <p><strong>Characteristic ingredience:</strong> {{ style.characteristicingredients }}</p>
+        <p><strong>Style Comparison:</strong> {{ style.stylecomparison }}</p>
+        <p><strong>Tags:</strong> {{ style.tags }}</p>
+    </div>
+    <div class="col-md-6">
+        <p><strong>Celkový dojem:</strong> {{ style.overallimpression_cz }}</p>
+        <p><strong>Aroma:</strong> {{ style.aroma_cz }}</p>
+        <p><strong>Vzhled:</strong> {{ style.appearance_cz }}</p>
+        <p><strong>Chuť:</strong> {{ style.flavor_cz }}</p>
+        <p><strong>Pocit v ústech:</strong> {{ style.mouthfeel_cz }}</p>
+        <p><strong>Komentáře:</strong> {{ style.comments_cz }}</p>
+        <p><strong>Historie:</strong> {{ style.history_cz }}</p>
+        <p><strong>Charakteristické ingredience:</strong> {{ style.characteristicingredients_cz }}</p>
+        <p><strong>Porovnání stylů:</strong> {{ style.stylecomparison_cz }}</p>        
+        <p><strong>Tagy:</strong> {{ style.tags_cz }}</p>
+    </div>
+</div>
+
+<hr>
+
+<!-- Další textová pole -->
+
+<p><strong>Commercial Examples:</strong> {{ style.commercialexamples }}</p>
+<p><strong>Entry Instructions:</strong> {{ style.entryinstructions }}</p>
+<p><strong>Currently Defined Types:</strong> {{ style.currentlydefinedtypes }}</p>
+<p><strong>Strength Classifications:</strong> {{ style.strengthclassifications }}</p>
+
+
+<a href="{% url 'beer_style_list' %}" class="btn btn-primary mt-4">Zpět na seznam</a>
+
+<!-- Navigační tlačítka dole -->
+<div class="d-flex justify-content-between my-4">
+    <a href="{% url 'beer_style_detail' first_style.id %}" class="btn btn-outline-primary">
+        ⏮️ Na začátek
+    </a>
+    {% if previous_style %}
+    <a href="{% url 'beer_style_detail' previous_style.id %}" class="btn btn-outline-secondary">
+        ◀️ Předchozí
+    </a>
+    {% else %}
+    <a class="btn btn-outline-secondary disabled">◀️ Předchozí</a>
+    {% endif %}
+    
+    {% if next_style %}
+    <a href="{% url 'beer_style_detail' next_style.id %}" class="btn btn-outline-secondary">
+        ▶️ Další
+    </a>
+    {% else %}
+    <a class="btn btn-outline-secondary disabled">▶️ Další</a>
+    {% endif %}
+    <a href="{% url 'beer_style_detail' last_style.id %}" class="btn btn-outline-primary">
+        ⏭️ Na konec
+    </a>
+</div>
+
+{% endblock %}

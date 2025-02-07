@@ -1,0 +1,33 @@
+{% extends 'beer_styles/base.html' %}
+
+{% block title %}Seznam pivních stylů{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Seznam pivních stylů</h1>
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Název</th>
+            <th>Kategorie</th>
+            <th>Číslo</th>
+            <th>IBU (min-max)</th>
+            <th>ABV (min-max)</th>
+            <th>EBC (min-max)</th>
+            <th>Brix (min-max)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for style in styles %}
+        <tr onclick="window.location.href='{% url 'beer_style_detail' style.id %}';" style="cursor: pointer;">
+            <td>{{ style.name }}</td>
+            <td>{{ style.category }}</td>
+            <td>{{ style.number }}</td>
+            <td>{{ style.ibumin }} - {{ style.ibumax }}</td>
+            <td>{{ style.abvmin }} - {{ style.abvmax }}</td>
+            <td>{{ style.ebcmin }} - {{ style.ebcmax }}</td>
+            <td>{{ style.brixmin }} - {{ style.brixmax }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
